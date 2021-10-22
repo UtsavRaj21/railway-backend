@@ -6,7 +6,7 @@ let bookingModel = require("../models/bookingModel")
 
 const addSeat = async function(req,res){
     try {
-        let number = [11,12,13,14,15,16,17];
+        let number = req.body.arr;
         let user = await bookingModel.findOne({"user":"Utsav"})
         user.seatOccupied = user.seatOccupied.concat(number) ;
         await user.save();
