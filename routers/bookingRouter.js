@@ -57,9 +57,27 @@ const add = async function(req,res){
         });
     }
 }
+
+const get = async function(req,res){
+    try{
+        let user = await bookingModel.findOne({"user":"Utsav"})
+        res.status(200).json({
+            "message": user.seatOccupied
+        })
+    }catch(err){
+        res.status(500).json({
+            message:err.message
+        })
+    }
+}
+
 bookingRouter
     .route('/')
     .post(add)
+
+bookingRouter
+    .route('/get')
+    .get(get)
 
 bookingRouter
     .route('/set')
