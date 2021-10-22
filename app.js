@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 let port = '8000'
-app.listen(port,function(){
+app.listen(process.env.PORT||port,function(){
     console.log(`server is Listening on port ${port}`)
 });
 
