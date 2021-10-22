@@ -10,9 +10,7 @@ const addSeat = async function(req,res){
         let user = await bookingModel.findOne({"user":"Utsav"})
         user.seatOccupied = user.seatOccupied.concat(number) ;
         await user.save();
-        res.status(200).json({
-            element: number,
-        });
+        res.status(200).json(number);
     } catch (err) {
         console.error(err);
         res.status(500).json({
@@ -61,9 +59,7 @@ const add = async function(req,res){
 const get = async function(req,res){
     try{
         let user = await bookingModel.findOne({"user":"Utsav"})
-        res.status(200).json({
-            "message": user.seatOccupied
-        })
+        res.status(200).json(user.seatOccupied)
     }catch(err){
         res.status(500).json({
             message:err.message

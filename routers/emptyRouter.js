@@ -6,9 +6,7 @@ let emptyModel = require("../models/emptyModel")
 const getSeats = async function(req,res){
     try{
         let user = await emptyModel.findOne({"user":"Utsav"})
-        res.status(200).json({
-            "message": user.seat
-        })
+        res.status(200).json(user.seat)
     }catch(err){
         res.status(500).json({
             message:err.message
