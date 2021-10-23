@@ -2,7 +2,7 @@ const express = require('express');
 let emptyRouter = express.Router();
 
 let emptyModel = require("../models/emptyModel")
-
+const app = express();
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
