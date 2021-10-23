@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-let { db_link } = require("../secrets"); //process.env         //||
+let { db_link } =  process.env         //||require("../secrets");
 
 mongoose.connect(db_link, {
 
