@@ -2,12 +2,8 @@ const express = require('express');
 let emptyRouter = express.Router();
 
 let emptyModel = require("../models/emptyModel")
-const app = express();
+let bookingModel = require("../models/bookingModel")
 
-
-
-
-  
 
 const getSeats = async function(req,res){
     try{
@@ -23,14 +19,15 @@ const getSeats = async function(req,res){
 
 const setSeat = async function(req,res){
     try {
-        console.log(req.body)
-        console.log("hello")
-        let element = await emptyModel.create({
-            "user":"Utsav",
-            "seat":80
-       });
+        let user = await emptyModel.findOne({"user":"Utsav"})
+        user.seat = 80;
+        await user.save();
+        let arrUser = await bookingModel.findOne({"user":"Utsav"})
+        arrUser.seatOccupied = [];
+        await arrUser.save();
         res.status(200).json({
-            element: element,
+            user: user.seat,
+            seatOccupied:arrUser.seatOccupied
         });
     } catch (err) {
         console.error(err.message);
